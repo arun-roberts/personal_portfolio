@@ -1,8 +1,22 @@
-.scrollSection {
-  postion: absolute;
+main {
+  position: sticky;
   top: 0;
+}
+
+#scrollDiv {
+  position: absolute;
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
-  z-index: 2;
-  height: 1000px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#scrollDiv::-webkit-scrollbar {
+  display: none;
+}
+
+.iCantSeeYou {
+  opacity: 0;
 }
