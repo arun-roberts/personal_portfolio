@@ -5,4 +5,11 @@ for(let i = 0; i < 30; i++){
     scrollDiv.innerHTML = addItUp
 }
 const testSubject: HTMLElement = document.getElementById('testSubject')
-scrollDiv.addEventListener('scroll', () => console.log(scrollDiv.scrollTop.toString()))
+let scrollNum: number
+scrollDiv.addEventListener('scroll', () => {
+    let scroller = scrollDiv.scrollTop
+    scrollNum = scroller
+    console.log(scrollNum > 100)
+    scrollNum > 100 ? mainTitle.style.color = 'blue' : mainTitle.style.color = 'black'
+    scrollNum > 300 ? mainTitle.style.backgroundColor = 'green' : mainTitle.style.backgroundColor = 'white'
+})

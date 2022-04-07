@@ -5,4 +5,11 @@ for (var i = 0; i < 30; i++) {
     scrollDiv.innerHTML = addItUp;
 }
 var testSubject = document.getElementById('testSubject');
-scrollDiv.addEventListener('scroll', function () { return console.log(scrollDiv.scrollTop.toString()); });
+var scrollNum;
+scrollDiv.addEventListener('scroll', function () {
+    var scroller = scrollDiv.scrollTop;
+    scrollNum = scroller;
+    console.log(scrollNum > 100);
+    scrollNum > 100 ? mainTitle.style.color = 'blue' : mainTitle.style.color = 'black';
+    scrollNum > 300 ? mainTitle.style.backgroundColor = 'green' : mainTitle.style.backgroundColor = 'white';
+});
