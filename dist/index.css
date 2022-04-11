@@ -5,37 +5,21 @@
   margin: 0;
   padding: 0;
 }
-*::before {
-  position: absolute;
-  top: 2.6em;
-  left: 50%;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.44em;
-  font-weight: 300;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 0.3em;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  transition: all 200ms ease;
-  transform: translateX(-50%) translateY(-50%) scale(0);
-  padding: 0.3em;
-  z-index: 2;
-}
-*:hover::before {
-  transform: translateX(-50%) translateY(0) scale(1);
+
+html, body {
+  width: 100%;
+  margin: 0;
 }
 
 main {
+  width: 100%;
   border-radius: 0.5em;
-  border: 1px solid black;
-  margin: 0.5em;
 }
 
 section {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: 8em;
-  gap: 0.8em;
-  padding: 0.8em;
+  gap: 0.4em;
+  padding: 0.4em;
 }
 
 article {
@@ -46,15 +30,39 @@ article {
 h1, h2 {
   font-family: "Beau Rivage", cursive;
   text-align: center;
-  border-bottom: 1px solid black;
+  cursor: default;
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 3.5em;
+  display: none;
 }
 
 h2 {
+  position: relative;
   font-size: 2em;
+  text-align: left;
+  padding-left: 0.4em;
+  display: flex;
+  align-items: center;
+}
+h2::before {
+  position: absolute;
+  content: "+";
+  font-family: "Roboto", sans-serif;
+  font-size: 0.8em;
+  font-weight: 100;
+  right: 0.35em;
+}
+h2::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
 }
 
 h4, p, li {
@@ -136,19 +144,10 @@ button {
   z-index: 900;
 }
 
-.me {
-  grid-column: 1/2;
-  grid-row: 1/3;
-}
-.me__body {
-  padding: 1em;
-}
-
 .content {
   width: 100%;
-  height: 100%;
-  grid-column: 2/3;
-  grid-row: 1/4;
+  height: 20em;
+  grid-row: 1;
   border-radius: 0.5em;
   background-image: url("../assets/5d9aef6c-a7b6-447e-9e87-7a8d99d9a41a.JPG");
   background-size: cover;
@@ -156,28 +155,28 @@ button {
   background-position-x: 50%;
 }
 
+.me {
+  grid-row: 2;
+}
+.me__body {
+  padding: 1em;
+}
+
 .work {
   width: 100%;
   transition: all 1s ease;
-  grid-column: 3/4;
-  grid-row: 1/3;
+  grid-row: 3;
 }
 .work__heading {
   position: relative;
 }
-.work__heading::before {
-  content: "AKA what I can do for your company";
-  width: 50%;
-  top: 2.6em;
-}
 .work-list {
   width: 100%;
-  height: calc(100% - 2.75em);
   display: grid;
   grid-auto-rows: 3em;
-  gap: 1em;
+  gap: 0.4em;
   overflow: scroll;
-  padding: 1em;
+  padding: 0.4em;
 }
 .work-list-item {
   width: 100%;
@@ -188,41 +187,37 @@ button {
   border-radius: 0.5em;
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: border 300ms ease;
-  cursor: pointer;
   padding: 0 0.5em;
   margin: 0 auto;
 }
 .work-list-item:hover {
   border: 1px solid black;
 }
+.work-list-item__heading {
+  cursor: default;
+}
 .work-list-item-options {
-  width: 5em;
+  width: 4em;
   display: flex;
   justify-content: space-between;
 }
 .work-list-item-options__visit {
   width: 2em;
   height: 2em;
+  cursor: pointer;
 }
 
 .education {
-  grid-column: 1/2;
-  grid-row: 3/5;
+  grid-row: 4;
 }
 .education__heading {
   position: relative;
 }
-.education__heading::before {
-  content: "because learning is fun";
-  width: 33%;
-}
 .education-list {
   width: 100%;
-  height: calc(100% - 2.75em);
   display: grid;
-  gap: 1em;
-  overflow: scroll;
-  padding: 1em;
+  gap: 0.4em;
+  padding: 0.4em;
 }
 .education-list__item {
   border-radius: 0.5em;
@@ -234,16 +229,71 @@ button {
   font-weight: 700;
 }
 
+.profiles {
+  grid-row: 5;
+}
+.profiles-list {
+  width: 64%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+.profiles-list__item {
+  width: 4em;
+  height: 4em;
+}
+.profiles-list__item a {
+  position: relative;
+}
+.profiles-list__item a .label {
+  font-size: 0.9em;
+  top: 3.85em;
+}
+.profiles-list__item:hover .label {
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.other {
+  position: relative;
+  grid-row: 6;
+}
+.other-list {
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  margin: 0 auto;
+  padding: 0.5em;
+}
+.other-list__item {
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+  margin: 0 auto;
+}
+.other-list__item button {
+  position: relative;
+}
+.other-list__item button .label {
+  font-size: 1em;
+  top: 3.6em;
+}
+.other-list__item:hover .label {
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+.other__heading {
+  transition: all 200ms ease;
+}
+
 .contact {
-  grid-column: 2/3;
-  grid-row: 4/5;
+  grid-row: 7;
 }
 .contact__heading {
   position: relative;
-}
-.contact__heading::before {
-  content: "so you can find me";
-  width: 28%;
 }
 .contact-list {
   width: 50%;
@@ -268,68 +318,342 @@ button {
   transform: translateX(-50%) translateY(0) scale(1);
 }
 
-.profiles {
-  grid-column: 3/4;
-  grid-row: 3/4;
-}
-.profiles-list {
-  width: 64%;
-  height: calc(100% - 2.75em);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-}
-.profiles-list__item {
-  width: 4em;
-  height: 4em;
-}
-.profiles-list__item a {
-  position: relative;
-}
-.profiles-list__item a .label {
-  font-size: 0.9em;
-  top: 3.85em;
-}
-.profiles-list__item:hover .label {
-  transform: translateX(-50%) translateY(0) scale(1);
-}
+@media screen and (min-width: 1200px) {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  *::before {
+    position: absolute;
+    top: 2.6em;
+    left: 50%;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.44em;
+    font-weight: 300;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.3em;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: all 200ms ease;
+    transform: translateX(-50%) translateY(-50%) scale(0);
+    padding: 0.3em;
+    z-index: 2;
+  }
+  *:hover::before {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
 
-.other {
-  position: relative;
-  grid-column: 3/4;
-  grid-row: 4/5;
-}
-.other-list {
-  width: 100%;
-  height: calc(100% - 2.75em);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: no-wrap;
-  margin: 0 auto;
-  padding: 0.5em;
-}
-.other-list__item {
-  width: 3em;
-  height: 3em;
-  cursor: pointer;
-  margin: 0 auto;
-}
-.other-list__item button {
-  position: relative;
-}
-.other-list__item button .label {
-  font-size: 1em;
-  top: 3.6em;
-}
-.other-list__item:hover .label {
-  transform: translateX(-50%) translateY(0) scale(1);
-}
-.other__heading {
-  transition: all 200ms ease;
-}
-.other__heading::before {
-  content: "so you don't think I'm one-dimensional";
-  width: 55%;
+  main {
+    border-radius: 0.5em;
+    border: 1px solid black;
+    margin: 0.5em;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 8em;
+    gap: 0.8em;
+    padding: 0.8em;
+  }
+
+  article {
+    border-radius: 0.5em;
+    border: 1px solid black;
+  }
+
+  h1, h2 {
+    font-family: "Beau Rivage", cursive;
+    text-align: center;
+    border-bottom: 1px solid black;
+    cursor: default;
+  }
+
+  h1 {
+    font-size: 4em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h4, p, li {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+  }
+
+  h4 {
+    border-radius: 0.5em;
+  }
+
+  svg {
+    width: 65%;
+    height: 65%;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  button {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+
+  .visit {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    list-style: none;
+    transition: border 200ms ease;
+    border: 1px solid rgba(0, 0, 0, 0);
+  }
+  .visit:hover {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  .visit:active {
+    border: 1px solid black;
+  }
+  .visit a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .link {
+    width: 2em;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .link span {
+    display: none;
+    opacity: 0;
+  }
+
+  .label {
+    position: absolute;
+    top: 2.6em;
+    left: 50%;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.44em;
+    font-weight: 300;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0.3em;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    transition: all 200ms ease;
+    transform: translateX(-50%) translateY(-50%) scale(0);
+    white-space: nowrap;
+    padding: 0.3em;
+    z-index: 900;
+  }
+
+  .me {
+    grid-column: 1/2;
+    grid-row: 1/3;
+  }
+  .me__body {
+    padding: 1em;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    grid-column: 2/3;
+    grid-row: 1/4;
+    border-radius: 0.5em;
+    background-image: url("../assets/5d9aef6c-a7b6-447e-9e87-7a8d99d9a41a.JPG");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+  }
+
+  .work {
+    width: 100%;
+    transition: all 1s ease;
+    grid-column: 3/4;
+    grid-row: 1/3;
+  }
+  .work__heading {
+    position: relative;
+  }
+  .work__heading::before {
+    content: "what you're really here to see";
+    width: 40%;
+    top: 2.6em;
+  }
+  .work-list {
+    width: 100%;
+    height: calc(100% - 2.75em);
+    display: grid;
+    grid-auto-rows: 3em;
+    gap: 1em;
+    overflow: scroll;
+    padding: 1em;
+  }
+  .work-list-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.5em;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transition: border 300ms ease;
+    padding: 0 0.5em;
+    margin: 0 auto;
+  }
+  .work-list-item:hover {
+    border: 1px solid black;
+  }
+  .work-list-item__heading {
+    cursor: default;
+  }
+  .work-list-item-options {
+    width: 5em;
+    display: flex;
+    justify-content: space-between;
+  }
+  .work-list-item-options__visit {
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+  }
+
+  .education {
+    grid-column: 1/2;
+    grid-row: 3/5;
+  }
+  .education__heading {
+    position: relative;
+  }
+  .education__heading::before {
+    content: "because learning is fun";
+    width: 33%;
+  }
+  .education-list {
+    width: 100%;
+    height: calc(100% - 2.75em);
+    display: grid;
+    gap: 1em;
+    overflow: scroll;
+    padding: 1em;
+  }
+  .education-list__item {
+    border-radius: 0.5em;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 0.5em;
+  }
+  .education-list__item span {
+    display: block;
+    font-weight: 700;
+  }
+
+  .contact {
+    grid-column: 2/3;
+    grid-row: 4/5;
+  }
+  .contact__heading {
+    position: relative;
+  }
+  .contact__heading::before {
+    content: "so you can find me";
+    width: 28%;
+  }
+  .contact-list {
+    width: 50%;
+    height: calc(100% - 2.75em);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .contact-list__item {
+    width: 4em;
+    height: 4em;
+  }
+  .contact-list__item a {
+    position: relative;
+  }
+  .contact-list__item a .label {
+    font-size: 0.9em;
+    top: 4em;
+  }
+  .contact-list__item:hover .label {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .profiles {
+    grid-column: 3/4;
+    grid-row: 3/4;
+  }
+  .profiles-list {
+    width: 64%;
+    height: calc(100% - 2.75em);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .profiles-list__item {
+    width: 4em;
+    height: 4em;
+  }
+  .profiles-list__item a {
+    position: relative;
+  }
+  .profiles-list__item a .label {
+    font-size: 0.9em;
+    top: 3.85em;
+  }
+  .profiles-list__item:hover .label {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .other {
+    position: relative;
+    grid-column: 3/4;
+    grid-row: 4/5;
+  }
+  .other-list {
+    width: 100%;
+    height: calc(100% - 2.75em);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: no-wrap;
+    margin: 0 auto;
+    padding: 0.5em;
+  }
+  .other-list__item {
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+  .other-list__item button {
+    position: relative;
+  }
+  .other-list__item button .label {
+    font-size: 1em;
+    top: 3.6em;
+  }
+  .other-list__item:hover .label {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  .other__heading {
+    transition: all 200ms ease;
+  }
+  .other__heading::before {
+    content: "so you don't think I'm one-dimensional";
+    width: 55%;
+  }
 }
