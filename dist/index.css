@@ -5,12 +5,81 @@
   transition: all 150ms ease;
 }
 
+button {
+  cursor: pointer;
+}
+
 svg {
   display: none;
 }
 
-.style-games {
+#style-games {
+  position: fixed;
+  width: 100%;
   display: flex;
+  justify-content: space-evenly;
+  margin: 0.5em auto 0;
+  opacity: 0;
+  z-index: 2;
+}
+
+#layout {
+  width: 6em;
+  height: 3em;
+  font-family: "Roboto Mono", serif;
+  font-size: 1em;
+  color: black;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 0.5em;
+}
+
+#dark {
+  width: 6em;
+  height: 3em;
+  font-family: "Roboto", sans-serif;
+  font-size: 1em;
+  background-color: #18181c;
+  color: white;
+  border: 3px solid pink;
+  border-radius: 0.5em;
+  padding: 0.8em;
+}
+
+#florid {
+  width: calc(6em * (2/3));
+  height: calc(3em * (2/3));
+  font-family: "Beau Rivage", cursive;
+  font-size: 1.5em;
+  color: black;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.modal {
+  position: fixed;
+  width: 10em;
+  height: 10em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto Mono", serif;
+  text-align: center;
+  background-color: #a86767;
+  border-radius: 0.5em;
+  border: 2px solid pink;
+  transition: all 800ms ease;
+  opacity: 0;
+}
+.modal---visible {
+  transition: all 800ms ease;
+  opacity: 1;
 }
 
 .content {
@@ -20,107 +89,11 @@ svg {
   background-size: cover;
 }
 
-.spacing {
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-.spacing * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-.spacing main {
-  width: 100%;
-}
-.spacing section {
-  padding: 0.4em;
-}
-.spacing h2 {
-  padding: 0.4em;
-}
-.spacing li {
-  list-style: none;
-}
-.spacing .link {
-  width: 2em;
-  height: 2em;
-}
-.spacing .label {
-  top: 2.6em;
-  left: 50%;
-  font-size: 0.44em;
-  font-weight: 300;
-  padding: 0.3em;
-}
-.spacing .me__body {
-  padding: 1em;
-}
-.spacing .work {
-  width: 100%;
-}
-.spacing .work-list {
-  width: 100%;
-  padding: 0.4em;
-}
-.spacing .work-list-item {
-  width: 100%;
-  height: 100%;
-  padding: 0 0.5em;
-  margin: 0 auto;
-}
-.spacing .work-list-item-options {
-  width: 4em;
-}
-.spacing .work-list-item-options__visit {
-  width: 2em;
-  height: 2em;
-}
-.spacing .education-list {
-  width: 100%;
-  padding: 0.4em;
-}
-.spacing .education-list__item {
-  padding: 0.5em;
-}
-.spacing .profiles-list {
-  margin: 0 auto;
-}
-.spacing .profiles-list__item .label {
-  font-size: 0.9em;
-  top: 3.85em;
-}
-.spacing .other-list {
-  padding: 0.5em;
-}
-.spacing .other-list__item {
-  margin: 0 auto;
-}
-.spacing .other-list__item button {
-  position: relative;
-}
-.spacing .other-list__item button .label {
-  font-size: 1em;
-}
-.spacing .contact-list {
-  width: 50%;
-  margin: 0 auto;
-}
-.spacing .contact-list__item {
-  width: 4em;
-  height: 4em;
-}
-.spacing .contact-list__item .label {
-  font-size: 0.9em;
-  top: 4em;
-}
-
 .layout {
   width: 100%;
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0 0 0.8em;
 }
 .layout * {
   box-sizing: border-box;
@@ -152,13 +125,13 @@ svg {
 }
 .layout h2 {
   position: relative;
-  font-size: 2em;
   font-size: 1.5em;
   font-weight: 300;
   text-transform: uppercase;
   text-align: left;
   padding: 0.4em;
   display: flex;
+  cursor: pointer;
   align-items: center;
 }
 .layout h2::before {
@@ -185,6 +158,7 @@ svg {
 }
 .layout h4 {
   border-radius: 0.5em;
+  font-size: 0.8em;
 }
 .layout svg {
   display: block;
@@ -197,7 +171,6 @@ svg {
 .layout button {
   width: 100%;
   height: 100%;
-  cursor: pointer;
   border: none;
   background-color: transparent;
 }
@@ -485,11 +458,6 @@ svg {
   transform: translateX(-50%) translateY(0) scale(1);
 }
 
-.light {
-  color: black;
-  background-color: none;
-}
-
 .dark {
   color: white;
   background-color: #18181c;
@@ -505,13 +473,17 @@ svg {
   font-size: 1.5em;
   text-transform: uppercase;
   font-weight: 500;
-  font-size: 1.5em;
+  font-size: 1.4em;
   padding: 0.3em;
 }
 .dark h2::after {
   border-bottom: 4px dotted pink;
 }
 .dark button {
+  color: white;
+  background-color: #18181c;
+}
+.dark a {
   color: white;
 }
 .dark .work-list-item {
@@ -523,6 +495,40 @@ svg {
 .dark .education-list__item {
   border: none;
   padding: 0.1em;
+}
+
+.florid main * {
+  font-family: "Beau Rivage", cursive !important;
+  text-transform: none;
+}
+.florid main *::before {
+  display: none;
+  padding: 0;
+}
+.florid main *::after {
+  display: none;
+  padding: 0;
+}
+.florid h2, .florid .other__heading {
+  font-size: 2.4em;
+  justify-content: center;
+  text-align: center;
+  text-decoration: underline;
+}
+.florid h4 {
+  font-size: 1.6em;
+}
+.florid p, .florid a, .florid button {
+  font-size: 1.2em;
+}
+.florid .me__body, .florid .work-list, .florid .education-list, .florid .profiles-list, .florid .other-list {
+  max-height: 300em;
+}
+.florid .content, .florid .me, .florid .work, .florid .profiles, .florid .education, .florid .other {
+  border: none;
+}
+.florid .work-list-item, .florid .education-list__item {
+  border: none;
 }
 
 @media screen and (min-width: 700px) {

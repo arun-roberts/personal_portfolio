@@ -22,11 +22,75 @@
     // &:active::before
     //     transform: translateX(-50%) translateY(0) scale(1)
 
+button
+    cursor: pointer
+
 svg
     display: none
 
-.style-games
+#style-games
+    position: fixed
+    width: 100%
     display: flex
+    justify-content: space-evenly
+    margin: 0.5em auto 0
+    opacity: 0
+    z-index: 2
+
+#layout
+    width: 6em
+    height: 3em
+    font-family: 'Roboto Mono', serif
+    font-size: 1em
+    color: black
+    background-color: white
+    border: 1px solid rgba(0, 0, 0, 0.8)
+    border-radius: 0.5em
+
+#dark
+    width: 6em
+    height: 3em
+    font-family: 'Roboto', sans-serif
+    font-size: 1em
+    background-color: rgb(24, 24, 28)
+    color: white
+    border: 3px solid pink
+    border-radius: 0.5em
+    padding: 0.8em
+
+#florid
+    width: calc(6em * (2/3))
+    height: calc(3em * (2/3))
+    font-family: 'Beau Rivage', cursive
+    font-size: 1.5em
+    color: black
+    background-color: white
+    border: 1px solid rgba(0, 0, 0, 0.2)
+    border-radius: 0.5em
+    text-decoration: underline
+    padding: 0
+
+.modal
+    position: fixed
+    width: 10em
+    height: 10em
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    display: flex
+    justify-content: center
+    align-items: center
+    font-family: 'Roboto Mono', serif
+    text-align: center
+    background-color: rgb(168, 103, 103)
+    border-radius: 0.5em
+    border: 2px solid pink
+    transition: all 800ms ease
+    opacity: 0
+
+    &---visible
+        transition: all 800ms ease
+        opacity: 1
 
 .content
     width: 100%
@@ -34,130 +98,11 @@ svg
     background-image: url('../assets/5d9aef6c-a7b6-447e-9e87-7a8d99d9a41a.JPG')
     background-size: cover
 
-.spacing
-    width: 100%
-    box-sizing: border-box
-    margin: 0
-    padding: 0
-
-    & * 
-        box-sizing: border-box
-        margin: 0
-        padding: 0
-
-    & main
-        width: 100%
-
-    & section
-        padding: 0.4em
-
-    & h2
-        padding: 0.4em
-
-    & li
-        list-style: none
-
-    // & button
-    //     width: 100%
-    //     height: 100%
-
-
-    // & .visit
-    //     width: 100%
-    //     height: 100%
-
-    & .link
-        width: 2em
-        height: 2em
-
-    & .label
-        top: 2.6em
-        left: 50%
-        font-size: 0.44em
-        font-weight: 300
-        padding: 0.3em
-        
-    & .me__body
-        padding: 1em
-
-    & .work
-        width: 100%
-
-        &-list
-            width: 100%
-            padding: 0.4em
-
-            &-item
-                width: 100%
-                height: 100%
-                padding: 0 0.5em
-                margin: 0 auto
-
-                &-options
-                    width: 4em
-
-                    &__visit
-                        width: 2em
-                        height: 2em
-
-    & .education
-
-        &-list
-            width: 100%
-            padding: 0.4em
-
-            &__item
-                padding: 0.5em
-
-    & .profiles
-
-        &-list
-            // width: 64%
-            margin: 0 auto
-
-            &__item
-                // width: 4em
-                // height: 4em
-
-                .label
-                    font-size: 0.9em  
-                    top: 3.85em
-
-    & .other
-
-        &-list
-            padding: 0.5em
-
-            &__item
-                margin: 0 auto
-
-                & button
-                    position: relative
-
-                    & .label
-                        font-size: 1em  
-
-
-    & .contact
-
-        &-list
-            width: 50%
-            margin: 0 auto
-
-            &__item
-                width: 4em
-                height: 4em
-
-                & .label
-                    font-size: 0.9em  
-                    top: 4em
-
-
 .layout
     width: 100%
     box-sizing: border-box
     margin: 0
-    padding: 0
+    padding: 0 0 0.8em
 
     & * 
         box-sizing: border-box
@@ -189,13 +134,13 @@ svg
 
     & h2
         position: relative
-        font-size: 2em
         font-size: 1.5em
         font-weight: 300
         text-transform: uppercase
         text-align: left
         padding: 0.4em
         display: flex
+        cursor: pointer
         align-items: center
 
         &::before
@@ -222,6 +167,7 @@ svg
 
     & h4
         border-radius: 0.5em
+        font-size: 0.8em
         
     & svg
         display: block
@@ -234,7 +180,6 @@ svg
     & button
         width: 100%
         height: 100%
-        cursor: pointer
         border: none
         background-color: transparent
 
@@ -364,7 +309,6 @@ svg
 
         &---open .work__heading::after
             transform: translateX(-50%) scale(1)
-            // border-bottom: 2px dotted rgba(0, 0, 0, 0.5)
 
         &---open .work__heading::before
             content: '–'
@@ -525,10 +469,6 @@ svg
                 &:hover .label
                     transform: translateX(-50%) translateY(0) scale(1)
 
-.light
-    color: black
-    background-color: none
-
 .dark
     color: white
     background-color: rgb(24, 24, 28)
@@ -549,13 +489,17 @@ svg
         font-size: 1.5em
         text-transform: uppercase
         font-weight: 500
-        font-size: 1.5em
+        font-size: 1.4em
         padding: 0.3em
 
         &::after
             border-bottom: 4px dotted pink
 
     & button
+        color: white
+        background-color: rgb(24, 24, 28)
+
+    & a
         color: white
 
     & .work-list-item
@@ -567,6 +511,51 @@ svg
     & .education-list__item
         border: none
         padding: 0.1em
+
+.florid
+
+    & main *
+        font-family: 'Beau Rivage', cursive !important
+        text-transform: none
+
+        &::before
+            display: none
+            padding: 0
+
+        &::after
+            display: none
+            padding: 0
+
+    & h2, & .other__heading
+        font-size: 2.4em
+        justify-content: center
+        text-align: center
+        text-decoration: underline
+
+    & h4
+        font-size: 1.6em
+
+    & p, a, button
+        font-size: 1.2em
+
+    & .me__body,
+    & .work-list, 
+    & .education-list,
+    & .profiles-list,
+    & .other-list
+        max-height: 300em
+
+    & .content, 
+    & .me,
+    & .work,
+    & .profiles,
+    & .education,
+    & .other
+        border: none
+
+    & .work-list-item,
+    & .education-list__item
+        border: none
 
 @media screen and ( min-width: 700px )
     section
