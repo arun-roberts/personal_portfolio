@@ -27,7 +27,7 @@ var putItIn = function (s) {
         setTimeout(function () {
             popUp.classList.remove('modal---visible');
             setTimeout(function () { return body.removeChild(popUp); }, 800);
-        }, 600 * count);
+        }, 1000 + 100 * count);
     }, 100);
 };
 meHeading.addEventListener('click', function () {

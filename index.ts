@@ -31,7 +31,7 @@ const putItIn = (s: string) => {
         setTimeout(() => {
             popUp.classList.remove('modal---visible')
             setTimeout(() => body.removeChild(popUp), 800)
-        }, 600 * count)
+        }, 1000 + 100 * count)
     }, 100)
 }
 
