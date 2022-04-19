@@ -30,56 +30,64 @@ var putItIn = function (s) {
         }, 1000 + 100 * count);
     }, 100);
 };
-meHeading.addEventListener('click', function () {
-    !body.classList.contains('florid') &&
-        me.classList.toggle('me---open');
-});
-workHeading.addEventListener('click', function () {
-    !body.classList.contains('florid') &&
-        work.classList.toggle('work---open');
-});
-profilesHeading.addEventListener('click', function () {
-    !body.classList.contains('florid') &&
-        profiles.classList.toggle('profiles---open');
-});
-educationHeading.addEventListener('click', function () {
-    !body.classList.contains('florid') &&
-        education.classList.toggle('education---open');
-});
-otherHeading.addEventListener('click', function () {
-    !body.classList.contains('florid') &&
-        other.classList.toggle('other---open');
-});
-layoutButton.addEventListener('click', function () {
-    body.classList.toggle('layout');
-    if (body.classList.contains('layout')) {
-        putItIn('Yes. Order.');
+//----------------MEDIA QUERIES----------------------
+var mobile = window.matchMedia('(max-width: 700px)');
+function handleMobileChange(e) {
+    if (e.matches) {
+        meHeading.addEventListener('click', function () {
+            !body.classList.contains('florid') &&
+                me.classList.toggle('me---open');
+        });
+        workHeading.addEventListener('click', function () {
+            !body.classList.contains('florid') &&
+                work.classList.toggle('work---open');
+        });
+        profilesHeading.addEventListener('click', function () {
+            !body.classList.contains('florid') &&
+                profiles.classList.toggle('profiles---open');
+        });
+        educationHeading.addEventListener('click', function () {
+            !body.classList.contains('florid') &&
+                education.classList.toggle('education---open');
+        });
+        otherHeading.addEventListener('click', function () {
+            !body.classList.contains('florid') &&
+                other.classList.toggle('other---open');
+        });
+        layoutButton.addEventListener('click', function () {
+            body.classList.toggle('layout');
+            if (body.classList.contains('layout')) {
+                putItIn('Yes. Order.');
+            }
+            else {
+                putItIn('A chaos enthusiast, are we?');
+            }
+        });
+        darkButton.addEventListener('click', function () {
+            body.classList.toggle('dark');
+            darkButton.innerHTML = body.classList.contains('dark') ? 'LIGHT' : 'DARK';
+            if (body.classList.contains('dark')) {
+                putItIn('Oooooo, edgy.');
+            }
+            else {
+                putItIn('Sure, back to normal. Is your life as exciting as your choices?');
+            }
+        });
+        floridButton.addEventListener('click', function () {
+            body.classList.toggle('florid');
+            floridButton.innerHTML = body.classList.contains('florid') ? 'Dull' : 'Florid';
+            if (body.classList.contains('florid')) {
+                putItIn('So fancy.');
+            }
+            else {
+                putItIn('Really???');
+            }
+        });
+        window.addEventListener('scroll', function () {
+            var s = window.scrollY / 300;
+            styleGames.style.opacity = s < 1 ? String(s) : '1';
+        });
     }
-    else {
-        putItIn('A chaos enthusiast, are we?');
-    }
-});
-darkButton.addEventListener('click', function () {
-    body.classList.toggle('dark');
-    darkButton.innerHTML = body.classList.contains('dark') ? 'LIGHT' : 'DARK';
-    if (body.classList.contains('dark')) {
-        putItIn('Oooooo, edgy.');
-    }
-    else {
-        putItIn('Sure, back to normal. Is your life as exciting as your choices?');
-    }
-});
-floridButton.addEventListener('click', function () {
-    body.classList.toggle('florid');
-    floridButton.innerHTML = body.classList.contains('florid') ? 'Dull' : 'Florid';
-    if (body.classList.contains('florid')) {
-        putItIn('So fancy.');
-    }
-    else {
-        putItIn('Really???');
-    }
-});
-window.addEventListener('scroll', function () {
-    var s = window.scrollY / 300;
-    styleGames.style.opacity = s < 1 ? String(s) : '1';
-});
+}
+mobile.addEventListener('change', handleMobileChange);
+handleMobileChange(mobile);
