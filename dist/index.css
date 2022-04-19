@@ -573,6 +573,27 @@ svg {
     padding: 0.8em;
   }
 
+  table {
+    display: table;
+    border-spacing: 2px;
+    border: 1px solid #54595d;
+    border-color: rgba(84, 89, 93, 0.3);
+    border-collapse: collapse;
+    font-size: 0.8em;
+  }
+
+  th {
+    font-weight: bold;
+    text-transform: capitalize;
+    background-color: #eaecf0;
+  }
+
+  th, td {
+    border: 1px solid #54595d;
+    border-color: rgba(84, 89, 93, 0.3);
+    padding: 0.2em;
+  }
+
   h1, h2 {
     font-family: "Times", serif;
     font-weight: 200;
@@ -602,10 +623,15 @@ svg {
     font-size: 1.8em;
     padding: 0.4em 0;
     border-bottom: 1px solid #eaecf0;
+    margin-bottom: 0.4em;
   }
 
   li {
     list-style: none;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .me {
@@ -616,6 +642,7 @@ svg {
   .content {
     grid-column: 2/3;
     grid-row: 1;
+    background-position-x: 78%;
   }
 
   .work {
@@ -673,10 +700,25 @@ svg {
     grid-row: 4;
   }
   .profiles-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     margin: 0 auto;
+  }
+  .profiles-list__item {
+    position: relative;
+    display: flex;
+    margin: 0.4em 0;
+    padding: 0.2em 2em;
+  }
+  .profiles-list__item::before {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    content: "•";
+    height: 100%;
+    width: 1em;
+    font-size: 1.5em;
   }
 
   .education {
@@ -687,22 +729,99 @@ svg {
     grid-column: 1/3;
     grid-row: 6;
   }
-  .contact__heading {
-    text-align: center;
-  }
-  .contact-list {
-    height: calc(100% - 2.75em);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  }
   .contact-list__item {
+    position: relative;
+    display: flex;
+    margin: 0.4em 0;
+    padding: 0.2em 2em;
+  }
+  .contact-list__item::before {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    content: "•";
+    height: 100%;
+    width: 1em;
     font-size: 1.5em;
   }
 
   .other {
     grid-column: 1/3;
     grid-row: 5;
+  }
+  .other-list {
+    counter-reset: count;
+  }
+  .other-list__item {
+    position: relative;
+    display: flex;
+    margin: 0.4em 1em;
+    padding: 0.2em 1.2em;
+  }
+  .other-list__item::before {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 1em;
+    counter-increment: count;
+    content: counter(count) ". ";
+  }
+  .other-list__item:nth-of-type(1)::after {
+    position: absolute;
+    content: "(Making with the air decoration.)";
+    left: 4.2em;
+  }
+  .other-list__item:nth-of-type(2)::after {
+    position: absolute;
+    content: "(Decorating the air decoration.)";
+    left: 4.5em;
+  }
+  .other-list__item:nth-of-type(3)::after {
+    position: absolute;
+    content: "(Fancy symbols in the brain.)";
+    left: 5em;
+  }
+  .other-list__item:nth-of-type(4)::after {
+    position: absolute;
+    content: "(Bouncy, bouncy ball battle.)";
+    left: 6em;
+  }
+  .other-list__item:nth-of-type(5)::after {
+    position: absolute;
+    content: "(More words than you can ever know.)";
+    left: 6.3em;
+  }
+  .other-list__item:nth-of-type(6)::after {
+    position: absolute;
+    content: "(Leave but only to come back again.)";
+    left: 4.2em;
+  }
+  .other-list__item:nth-of-type(7)::after {
+    position: absolute;
+    content: "(Delicious, tasty treats on table.)";
+    left: 5em;
+  }
+  .other-list__item:nth-of-type(8)::after {
+    position: absolute;
+    content: "(The page can have the feelings for me.)";
+    left: 4.5em;
+  }
+  .other-list__item button {
+    position: relative;
+    border: none;
+    background-color: transparent;
+    color: blue;
+    font-size: 1em;
+  }
+  .other-list__item button:visited {
+    color: #6a2492;
   }
 }
 @media screen and (min-width: 1200px) {
@@ -730,15 +849,21 @@ svg {
     transform: translateX(-50%) translateY(0) scale(1);
   }
 
+  header {
+    background: none;
+    border-bottom: 1px solid black;
+  }
+
   main {
+    width: 90%;
     border-radius: 0.5em;
     border: 1px solid black;
-    margin: 0.5em;
+    margin: 2em auto;
   }
 
   section {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 4fr 3fr 4fr;
     grid-auto-rows: 8em;
     gap: 0.8em;
     padding: 0.8em;
@@ -747,21 +872,28 @@ svg {
   article {
     border-radius: 0.5em;
     border: 1px solid black;
+    padding: 0;
   }
 
   h1, h2 {
     font-family: "Beau Rivage", cursive;
     text-align: center;
-    border-bottom: 1px solid black;
     cursor: default;
   }
 
   h1 {
-    font-size: 4em;
+    font-size: 3em;
+    font-variant-caps: normal;
+  }
+  h1::before, h1::after {
+    display: none;
   }
 
   h2 {
     font-size: 2em;
+    border-bottom: 1px solid black;
+    padding: 0;
+    margin: 0;
   }
 
   h4, p, li {
@@ -774,8 +906,8 @@ svg {
   }
 
   svg {
-    width: 65%;
-    height: 65%;
+    width: 100%;
+    height: 100%;
   }
 
   li {
@@ -800,6 +932,8 @@ svg {
     list-style: none;
     transition: border 200ms ease;
     border: 1px solid rgba(0, 0, 0, 0);
+    padding: 0;
+    margin: 0;
   }
   .visit:hover {
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -814,15 +948,16 @@ svg {
   }
 
   .link {
-    width: 2em;
+    width: 32px;
     height: 2em;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0;
+    margin: 0;
   }
   .link span {
     display: none;
-    opacity: 0;
   }
 
   .label {
@@ -898,6 +1033,9 @@ svg {
     padding: 0 0.5em;
     margin: 0 auto;
   }
+  .work-list-item::before {
+    display: none;
+  }
   .work-list-item:hover {
     border: 1px solid black;
   }
@@ -905,7 +1043,7 @@ svg {
     cursor: default;
   }
   .work-list-item-options {
-    width: 5em;
+    width: 4em;
     display: flex;
     justify-content: space-between;
   }
@@ -913,6 +1051,23 @@ svg {
     width: 2em;
     height: 2em;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+  .work-list-item-options__visit a svg {
+    display: block;
+    height: 1.3em;
+    width: 1.3em;
+    fill: black;
+    margin: 0;
+  }
+  .work-list-item-options__visit a:visited svg {
+    fill: black;
+  }
+  .work__svg {
+    width: 4em;
+    height: 4em;
+    fill: black;
   }
 
   .education {
@@ -967,8 +1122,16 @@ svg {
     width: 4em;
     height: 4em;
   }
+  .contact-list__item::before {
+    display: none;
+  }
   .contact-list__item a {
     position: relative;
+  }
+  .contact-list__item a svg {
+    display: block;
+    width: 3em;
+    height: 3em;
   }
   .contact-list__item a .label {
     font-size: 0.9em;
@@ -994,8 +1157,16 @@ svg {
     width: 4em;
     height: 4em;
   }
+  .profiles-list__item::before {
+    display: none;
+  }
   .profiles-list__item a {
     position: relative;
+  }
+  .profiles-list__item a svg {
+    width: 2em;
+    height: 2em;
+    display: block;
   }
   .profiles-list__item a .label {
     font-size: 0.9em;
@@ -1026,8 +1197,22 @@ svg {
     cursor: pointer;
     margin: 0 auto;
   }
+  .other-list__item::after, .other-list__item::before {
+    display: none;
+  }
   .other-list__item button {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .other-list__item button::before {
+    display: none;
+  }
+  .other-list__item button svg {
+    display: block;
+    width: 2em;
+    height: 2em;
   }
   .other-list__item button .label {
     font-size: 1em;
