@@ -4,24 +4,6 @@
 *
     transition: all 150ms ease
 
-    // &::before
-    //     position: absolute
-    //     top: 2.6em
-    //     left: 50%
-    //     font-family: 'Roboto', sans-serif
-    //     font-size: 0.44em
-    //     font-weight: 300
-    //     background-color: rgba(255, 255, 255, 0.8)
-    //     border-radius: 0.3em
-    //     border: 1px solid rgba(0, 0, 0, 0.3)
-    //     transition: all 200ms ease
-    //     transform: translateX(-50%) translateY(-50%) scale(0) 
-    //     padding: 0.3em
-    //     z-index: 2
-    
-    // &:active::before
-    //     transform: translateX(-50%) translateY(0) scale(1)
-
 button
     cursor: pointer
 
@@ -249,8 +231,11 @@ svg
 
         &__heading
 
-        &__body
+        &_body
+            display: grid
+            gap: 0.8em
             max-height: 4.375em
+            max-height: 3.45em
             overflow: hidden
             transition: all 400ms ease
             padding: 1em
@@ -258,7 +243,7 @@ svg
         &---open .me__heading::before
             content: '–'
 
-        &---open .me__body
+        &---open .me_body
             max-height: 30em
 
     & .work
@@ -539,7 +524,7 @@ svg
     & p, a, button
         font-size: 1.2em
 
-    & .me__body,
+    & .me_body,
     & .work-list, 
     & .education-list,
     & .profiles-list,
@@ -650,6 +635,10 @@ svg
     .me
         grid-column: 1 / 2
         grid-row: 1
+
+        &_body
+            display: grid
+            gap: 0.8em
     
     .content
         grid-column: 2 / 3
@@ -992,7 +981,9 @@ svg
 
         &__heading
 
-        &__body
+        &_body
+            height: calc(100% - 2.75em)
+            overflow-y: scroll
             padding: 1em
 
     .content

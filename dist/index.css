@@ -238,8 +238,11 @@ svg {
 .layout .me {
   grid-row: 2;
 }
-.layout .me__body {
+.layout .me_body {
+  display: grid;
+  gap: 0.8em;
   max-height: 4.375em;
+  max-height: 3.45em;
   overflow: hidden;
   transition: all 400ms ease;
   padding: 1em;
@@ -247,7 +250,7 @@ svg {
 .layout .me---open .me__heading::before {
   content: "–";
 }
-.layout .me---open .me__body {
+.layout .me---open .me_body {
   max-height: 30em;
 }
 .layout .work {
@@ -522,7 +525,7 @@ svg {
 .florid p, .florid a, .florid button {
   font-size: 1.2em;
 }
-.florid .me__body, .florid .work-list, .florid .education-list, .florid .profiles-list, .florid .other-list {
+.florid .me_body, .florid .work-list, .florid .education-list, .florid .profiles-list, .florid .other-list {
   max-height: 300em;
 }
 .florid .content, .florid .me, .florid .work, .florid .profiles, .florid .education, .florid .other {
@@ -637,6 +640,10 @@ svg {
   .me {
     grid-column: 1/2;
     grid-row: 1;
+  }
+  .me_body {
+    display: grid;
+    gap: 0.8em;
   }
 
   .content {
@@ -982,7 +989,9 @@ svg {
     grid-column: 1/2;
     grid-row: 1/3;
   }
-  .me__body {
+  .me_body {
+    height: calc(100% - 2.75em);
+    overflow-y: scroll;
     padding: 1em;
   }
 
